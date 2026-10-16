@@ -24,7 +24,7 @@
 17. Practice checklist
 18. Quick reference
 
-------------------------------------------------------------------------
+---
 
 # 1. Git and GitHub
 
@@ -38,13 +38,13 @@ collaborating. Git can be used locally without GitHub.
 
 Check installation:
 
-``` bash
+```bash
 git --version
 ```
 
 Set the identity recorded in commits:
 
-``` bash
+```bash
 git config --global user.name "Your Name"
 git config --global user.email "you@example.com"
 git config --global --list
@@ -52,7 +52,7 @@ git config --global --list
 
 Optional: use VS Code as the Git editor:
 
-``` bash
+```bash
 git config --global core.editor "code --wait"
 ```
 
@@ -61,25 +61,27 @@ command run inside a repository can apply only to that repository.
 
 # 3. Essential terms
 
-  Term                   Meaning
-  ---------------------- -------------------------------------------------
-  Repository             Project and its Git history
-  Working tree           Files you currently edit
-  Staging area / index   Changes selected for the next commit
-  Commit                 A snapshot in project history
-  Branch                 A named line of development
-  HEAD                   Usually the currently checked-out commit/branch
-  Remote                 A named connection to another repository
-  Clone                  Create a local copy of a repository
-  Merge                  Combine another branch into the current branch
-  Conflict               Changes Git cannot combine automatically
-  `.git`                 Hidden directory containing Git metadata
+Term Meaning
+
+---
+
+Repository Project and its Git history
+Working tree Files you currently edit
+Staging area / index Changes selected for the next commit
+Commit A snapshot in project history
+Branch A named line of development
+HEAD Usually the currently checked-out commit/branch
+Remote A named connection to another repository
+Clone Create a local copy of a repository
+Merge Combine another branch into the current branch
+Conflict Changes Git cannot combine automatically
+`.git` Hidden directory containing Git metadata
 
 # 4. Create a repository
 
 Start a new project:
 
-``` bash
+```bash
 mkdir git-practice
 cd git-practice
 git init
@@ -89,7 +91,7 @@ git status
 
 Clone an existing project instead:
 
-``` bash
+```bash
 git clone https://github.com/OWNER/REPOSITORY.git
 cd REPOSITORY
 ```
@@ -100,33 +102,33 @@ Replace the example URL with the real repository URL.
 
 The normal flow is:
 
-``` text
+```text
 Edit files → stage changes → commit changes
 Working tree → staging area → repository history
 ```
 
 Check status:
 
-``` bash
+```bash
 git status
 ```
 
 See unstaged edits:
 
-``` bash
+```bash
 git diff
 ```
 
 Stage one file or all changes under the current directory:
 
-``` bash
+```bash
 git add README.md
 git add .
 ```
 
 Review staged changes and commit them:
 
-``` bash
+```bash
 git diff --staged
 git commit -m "Add project README"
 ```
@@ -137,7 +139,7 @@ not just `changes`.
 
 # 6. History
 
-``` bash
+```bash
 git log --oneline
 git log
 git log --oneline --graph --decorate --all
@@ -152,7 +154,7 @@ Use an actual commit ID from your history in place of `COMMIT_ID`.
 A `.gitignore` file tells Git to ignore matching **untracked** files.
 Example:
 
-``` gitignore
+```gitignore
 node_modules/
 .env
 .env.*
@@ -166,7 +168,7 @@ Thumbs.db
 If a file is already tracked, `.gitignore` does not untrack it. To stop
 tracking it but keep the local file:
 
-``` bash
+```bash
 git rm --cached path/to/file
 git commit -m "Stop tracking ignored file"
 ```
@@ -181,19 +183,19 @@ Check `git status` before using undo commands.
 
 Discard unstaged edits to a file (these edits can be lost):
 
-``` bash
+```bash
 git restore README.md
 ```
 
 Unstage a file but keep its edits:
 
-``` bash
+```bash
 git restore --staged README.md
 ```
 
 Correct the most recent commit, usually before sharing it:
 
-``` bash
+```bash
 git add README.md
 git commit --amend -m "Correct README title"
 ```
@@ -203,7 +205,7 @@ shared with others unless you understand the impact.
 
 Create a new commit that reverses an earlier commit:
 
-``` bash
+```bash
 git revert COMMIT_ID
 ```
 
@@ -214,27 +216,27 @@ not use it casually.
 
 List branches and create/switch to a new branch:
 
-``` bash
+```bash
 git branch
 git switch -c feature/navbar
 ```
 
 Switch branches:
 
-``` bash
+```bash
 git switch main
 ```
 
 Merge `feature/navbar` into the branch you are currently on:
 
-``` bash
+```bash
 git switch main
 git merge feature/navbar
 ```
 
 Delete a merged local branch:
 
-``` bash
+```bash
 git branch -d feature/navbar
 ```
 
@@ -246,7 +248,7 @@ branch may be named `main` or `master`.
 A conflict means Git cannot automatically reconcile overlapping changes.
 Conflict markers look like:
 
-``` text
+```text
 <<<<<<< HEAD
 Content from the current branch
 =======
@@ -257,14 +259,14 @@ Content from the branch being merged
 Edit the file to keep the intended final content and remove all markers.
 Then test, stage, and finish the merge:
 
-``` bash
+```bash
 git add path/to/conflicted-file
 git commit
 ```
 
 To abandon an active merge:
 
-``` bash
+```bash
 git merge --abort
 ```
 
@@ -275,7 +277,7 @@ Check `git status` to confirm what state the repository is in.
 A remote is a named connection to another repository. `origin` is the
 common default name.
 
-``` bash
+```bash
 git remote -v
 git remote add origin https://github.com/USERNAME/REPOSITORY.git
 ```
@@ -283,7 +285,7 @@ git remote add origin https://github.com/USERNAME/REPOSITORY.git
 If `origin` already exists, inspect it with `git remote -v`. To change
 its URL:
 
-``` bash
+```bash
 git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
 ```
 
@@ -291,32 +293,32 @@ git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
 
 Clone a repository:
 
-``` bash
+```bash
 git clone https://github.com/USERNAME/REPOSITORY.git
 ```
 
 Download remote updates without integrating them into your current
 branch:
 
-``` bash
+```bash
 git fetch origin
 ```
 
 Fetch and integrate updates into the current branch:
 
-``` bash
+```bash
 git pull
 ```
 
 Upload commits:
 
-``` bash
+```bash
 git push
 ```
 
 For a new local branch, set its upstream on the first push:
 
-``` bash
+```bash
 git push -u origin main
 ```
 
@@ -325,7 +327,7 @@ git push -u origin main
 Create an empty repository on GitHub, then run these inside the local
 project:
 
-``` bash
+```bash
 git init
 git add .
 git commit -m "Initial commit"
@@ -344,7 +346,7 @@ personal access token, not your account password. Never share a token.
 
 A `README.md` explains a project's purpose, setup, and usage.
 
-```` markdown
+````markdown
 # Project Name
 
 ## Features
@@ -375,7 +377,7 @@ editor.
 
 Tags label commits, often for releases:
 
-``` bash
+```bash
 git tag
 git tag -a v1.0.0 -m "Version 1.0.0"
 git push origin v1.0.0
@@ -383,7 +385,7 @@ git push origin v1.0.0
 
 Stash temporarily shelves work:
 
-``` bash
+```bash
 git stash
 git stash -u
 git stash list
@@ -415,7 +417,7 @@ URL needs changing.
 Do not immediately force-push. Inspect the message and repository state.
 Often you need to integrate remote changes, for example:
 
-``` bash
+```bash
 git pull --rebase
 ```
 
@@ -426,7 +428,7 @@ Resolve conflicts if needed, then push. If unsure, stop and inspect
 
 For a small change:
 
-``` bash
+```bash
 git status
 # Edit and test your files
 git diff
@@ -444,46 +446,46 @@ reset, rebase, and force-push commands on shared work.
 
 Use a disposable practice folder.
 
--   [ ] Check the Git version and configure your identity.
--   [ ] Initialize a repository and create `README.md`.
--   [ ] Stage and commit the file.
--   [ ] Edit the file and inspect `git diff`.
--   [ ] Stage changes and inspect `git diff --staged`.
--   [ ] Make a second commit and inspect `git log --oneline`.
--   [ ] Add `.gitignore` and ignore a sample `.log` file.
--   [ ] Create a feature branch, edit a file, and commit.
--   [ ] Merge the feature branch into `main`.
--   [ ] Create a GitHub repository and push your project.
--   [ ] Clone the remote into another folder.
--   [ ] Practise a merge conflict in a disposable repository.
+- [ ] Check the Git version and configure your identity.
+- [ ] Initialize a repository and create `README.md`.
+- [ ] Stage and commit the file.
+- [ ] Edit the file and inspect `git diff`.
+- [ ] Stage changes and inspect `git diff --staged`.
+- [ ] Make a second commit and inspect `git log --oneline`.
+- [ ] Add `.gitignore` and ignore a sample `.log` file.
+- [ ] Create a feature branch, edit a file, and commit.
+- [ ] Merge the feature branch into `main`.
+- [ ] Create a GitHub repository and push your project.
+- [ ] Clone the remote into another folder.
+- [ ] Practise a merge conflict in a disposable repository.
 
 Before running each command, predict what it will do. Afterwards, use
 `git status` or `git log` to check your understanding.
 
 # 18. Quick reference
 
-  Goal                        Command
-  --------------------------- -----------------------------
-  Version                     `git --version`
-  Initialize                  `git init`
-  Clone                       `git clone URL`
-  Status                      `git status`
-  Unstaged diff               `git diff`
-  Stage file                  `git add FILE`
-  Commit                      `git commit -m "message"`
-  History                     `git log --oneline`
-  Branch list                 `git branch`
-  Create/switch branch        `git switch -c BRANCH`
-  Switch branch               `git switch BRANCH`
-  Merge into current branch   `git merge BRANCH`
-  Remotes                     `git remote -v`
-  Fetch                       `git fetch`
-  Pull                        `git pull`
-  Push                        `git push`
-  Unstage                     `git restore --staged FILE`
-  Discard unstaged edits      `git restore FILE`
-  Stash                       `git stash`
-  Inspect commit              `git show`
+| Goal                      | Command                     |
+| ------------------------- | --------------------------- |
+| Version                   | `git --version`             |
+| Initialize                | `git init`                  |
+| Clone                     | `git clone URL`             |
+| Status                    | `git status`                |
+| Unstaged diff             | `git diff`                  |
+| Stage file                | `git add FILE`              |
+| Commit                    | `git commit -m "message"`   |
+| History                   | `git log --oneline`         |
+| Branch list               | `git branch`                |
+| Create/switch branch      | `git switch -c BRANCH`      |
+| Switch branch             | `git switch BRANCH`         |
+| Merge into current branch | `git merge BRANCH`          |
+| Remotes                   | `git remote -v`             |
+| Fetch                     | `git fetch`                 |
+| Pull                      | `git pull`                  |
+| Push                      | `git push`                  |
+| Unstage                   | `git restore --staged FILE` |
+| Discard unstaged edits    | `git restore FILE`          |
+| Stash                     | `git stash`                 |
+| Inspect commit            | `git show`                  |
 
 ## Recommended learning order
 
